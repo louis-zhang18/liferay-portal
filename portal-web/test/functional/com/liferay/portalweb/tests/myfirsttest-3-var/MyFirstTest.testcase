@@ -1,0 +1,18 @@
+@component-name = "portal-web-smoke"
+definition {
+    property testray.main.component.name = "Smoke";
+
+	@description = "Ensure that the super admin can login successful."
+    @priority = "5"
+    test SuperAdminLogin{ 
+
+		MyFirstMacro.login(
+			loginPassword = "test",
+			passwordReminderAnswer = "test",
+			userEmailAddress = "test@liferay.com"
+		);
+
+		MyFirstMacro.verifyLogin();
+    }
+}
+
