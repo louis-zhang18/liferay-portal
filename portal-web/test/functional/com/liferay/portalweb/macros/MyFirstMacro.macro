@@ -4,13 +4,12 @@ definition {
 
 		AssertClick(locator1="LRLogin#SIGN_IN_LINK", value1="Sign In");
 
-		for((var userEmailAddress : list "${userEmailAddress}")&&(var userPassword : list "${userPassword}")){
+		Type(locator1="LRLogin#EMAIL_ADDRESS_FIELD", value1="${userEmailAddress}");
 
-			Type(locator1="LRLogin#EMAIL_ADDRESS_FIELD", value1="${userEmailAddress}");
-			Type(locator1="LRLogin#PASSWORD_FIELD", value1="${userPassword}");
+		Type(locator1="LRLogin#PASSWORD_FIELD", value1="${userPassword}");
 
-			AssertClick(locator1="LRLogin#SIGN_IN_BUTTON", value1="Sign In");
-		}
+		AssertClick(locator1="LRLogin#SIGN_IN_BUTTON", value1="Sign In");
+
 		if(IsElementPresent(locator1="LRTermsOfUse#I_AGREE_BUTTON")){
 			AssertClick(locator1="LRTermsOfUse#I_AGREE_BUTTON", value1="I Agree");
 		}
@@ -24,8 +23,6 @@ definition {
 		}
 	}
 	macro viewLogin {
-		for((var userFullName : list "${userFullName}"){
-				AssertTextEquals(locator1="LRWelcome#WELCOME", value1 = "${userfullname}");
-		}
+		AssertTextEquals(locator1="LRWelcome#WELCOME", value1 = "${userFullName}");
 	}
 }
